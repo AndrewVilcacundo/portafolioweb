@@ -5,6 +5,8 @@ const path = require('path');
 const app = express()
 
 
+const methodOverride = require('method-override');
+
 
 
 
@@ -30,12 +32,13 @@ app.set('view engine','.hbs')
 // Middlewares 
 //SERVIDOR VA A TRABAJAR CON INFORMACION EN BASE A FORMULARIOS
 app.use(express.urlencoded({extended:false}))
-
+app.use(methodOverride('_method'))
 
 // Variables globales
 
 // Rutas 
 app.use(require('./routers/index.routes'))
+app.use(require('./routers/portafolio.routes'))
 
 // Archivos estáticos
 // DEFINIR ARCHIVOS ESTÁTICOS Y PÚBLICOS
